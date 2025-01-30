@@ -22,7 +22,7 @@ terraform {
 resource "ibm_is_instance" "bastion" {
   count   = var.bastion_count
   name    = "${var.unique_id}-bastion-vsi-${count.index + 1}"
-  image   = var.ibm_is_image.os.id #data previously
+  image   = data.ibm_is_image.os.id 
   profile = var.vsi_profile
 
   primary_network_interface {
